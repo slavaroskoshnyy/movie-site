@@ -1,0 +1,108 @@
+// Высота картинки
+$heightImg: 600px;
+
+.iconsLeft {
+   width: 20px;
+   height: 20px;
+   border-top: 3px solid #6E18C0;
+   border-left: 3px solid #6E18C0;
+   transform: rotate(-45deg);
+}
+
+.iconsRigh {
+   width: 20px;
+   height: 20px;
+   border-top: 3px solid #6E18C0;
+   border-right: 3px solid #6E18C0;
+   transform: rotate(45deg);
+}
+
+.section {
+   position: relative;
+   width: 98vw;
+   margin: 0 auto;
+   height: $heightImg;
+   display: flex;
+   align-items: center;
+}
+
+.sectionCenter {
+   margin: 20px auto;
+   width: 98vw;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   // overflow: hidden;
+}
+
+.iconsLeft:active,
+.iconsRigh:active {
+   border-color: #000;
+}
+
+.iconsLeft {
+   position: absolute;
+   left: 35px;
+   top: 50%
+}
+
+.iconsRigh {
+   position: absolute;
+   right: 35px;
+   top: 50%
+}
+
+article {
+   position: absolute;
+   top: 0;
+   transition: all 0.3s linear;
+
+   img {
+      position: relative;
+      margin: 0 20px;
+      min-width: 90vw;
+      max-width: 90vw;
+      height: $heightImg;
+      border-radius: 30px;
+   }
+
+   button {
+      background-color: rgb(237, 68, 68);
+      border: none;
+      padding: 10px 20px 15px;
+      border-radius: 8px;
+      font-size: 20px;
+
+      a {
+         color: #f1f5f8;
+      }
+   }
+}
+
+.wrapperContent {
+   position: absolute;
+   left: 50px;
+   bottom: 10%;
+   width: 30vw;
+
+   h2 {
+      font-size: 40px;
+   }
+
+   p {
+      font-size: 30px;
+      margin: 30px 0;
+   }
+}
+
+.activeSlider {
+   transform: translatex(0);
+}
+
+.lastSlider {
+   transform: translatex(-100%);
+}
+
+.nextSlider {
+   transform: translatex(100%);
+}
