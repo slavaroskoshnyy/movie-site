@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { FaBeer, FaQuoteLeft } from "react-icons/fa";
 import { AiFillCaretLeft } from "react-icons/ai";
-import cl from "./components/slider/slider.module.scss";
+import bigSlider from "./components/slider/bigSlider.module.scss";
+import smolSlider from "./components/slider/smolSlider.module.scss";
 import "./App.scss";
-import data from "./data";
-import Slider from "./components/slider/slider";
+import datas from "./data";
+import Slider from "./components/slider/Slider";
 
 function App() {
   //   interface IMovie {
@@ -41,48 +42,10 @@ function App() {
   //   }, [currentIndex]);
 
   return (
-    //  <div className={cl.section}>
-    //    <div className={cl.sectionCenter}>
-    //      {movies.map((movie: IMovie, movieIndex: number) => {
-    //        const { id, title, url, description } = movie;
-
-    //        let position = `${cl.nextSlider}`;
-    //        if (movieIndex === currentIndex) {
-    //          position = `${cl.activeSlider}`;
-    //        }
-
-    //        if (
-    //          movieIndex === currentIndex - 1 ||
-    //          (currentIndex === 0 && movieIndex === movies.length - 1)
-    //        ) {
-    //          position = `${cl.lastSlider}`;
-    //        }
-    //        return (
-    //          <article className={position} key={id}>
-    //            <img src={url} alt={title} />
-    //            <div className={cl.wrapperContent}>
-    //              <h2>{title}</h2>
-    //              <p>{description}</p>
-    //              <button>
-    //                <a href="/" target="_blank">
-    //                  Смотреть
-    //                </a>
-    //              </button>
-    //            </div>
-    //          </article>
-    //        );
-    //      })}
-    //      <div
-    //        className={cl.iconsLeft}
-    //        onClick={() => setCurrentIndex((prevState) => prevState - 1)}
-    //      ></div>
-    //      <div
-    //        className={cl.iconsRigh}
-    //        onClick={() => setCurrentIndex((prevState) => prevState + 1)}
-    //      ></div>
-    //    </div>
-    //  </div>
-    <Slider />
+    <div>
+      <Slider shift={true} data={datas} stails={bigSlider} />;
+      <Slider data={datas} stails={smolSlider} />;
+    </div>
   );
 }
 

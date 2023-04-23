@@ -1,4 +1,4 @@
-// Высота картинки
+// Высота картинки = высоте самого блока
 $heightImg: 600px;
 
 .iconsLeft {
@@ -18,8 +18,9 @@ $heightImg: 600px;
 }
 
 .section {
+   overflow: hidden;
    position: relative;
-   width: 98vw;
+   max-width: 98vw;
    margin: 0 auto;
    height: $heightImg;
    display: flex;
@@ -32,7 +33,7 @@ $heightImg: 600px;
    display: flex;
    align-items: center;
    justify-content: center;
-   // overflow: hidden;
+   overflow: hidden;
 }
 
 .iconsLeft:active,
@@ -42,34 +43,35 @@ $heightImg: 600px;
 
 .iconsLeft {
    position: absolute;
-   left: 35px;
+   left: 2%;
    top: 50%
 }
 
 .iconsRigh {
    position: absolute;
-   right: 35px;
+   right: 2%;
    top: 50%
 }
 
-article {
+.img {
+   position: relative;
+   margin: 0 20px;
+   min-width: 90vw;
+   max-width: 90vw;
+   height: $heightImg;
+   border-radius: 30px;
+   cursor: pointer;
+}
+
+.article {
    position: absolute;
    top: 0;
    transition: all 0.3s linear;
 
-   img {
-      position: relative;
-      margin: 0 20px;
-      min-width: 90vw;
-      max-width: 90vw;
-      height: $heightImg;
-      border-radius: 30px;
-   }
-
    button {
       background-color: rgb(237, 68, 68);
       border: none;
-      padding: 10px 20px 15px;
+      padding: 10px 20px;
       border-radius: 8px;
       font-size: 20px;
 
@@ -85,7 +87,7 @@ article {
    bottom: 10%;
    width: 30vw;
 
-   h2 {
+   a {
       font-size: 40px;
    }
 

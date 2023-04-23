@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
-import data from "../../data";
-import cl from "./slider.module.scss";
+import cn from "classnames";
+interface IMovie {
+  albumId: number;
+  id: number;
+  title: string;
+  url: string;
+  thumbnailUrl: string;
+  [key: string]: string | number;
+}
 
-export default function Slider() {
-  interface IMovie {
-    albumId: number;
-    id: number;
-    title: string;
-    url: string;
-    thumbnailUrl: string;
-    [key: string]: string | number;
-  }
+interface ISlider {
+  shift?: boolean;
+  data: IMovie[];
+  stails: any;
+}
+
+export default function Slider({ shift = false, data, stails }: ISlider) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [movies, setMovies] = useState(data);
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -27,41 +32,52 @@ export default function Slider() {
     }
   }, [currentIndex, movies]);
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() => {
-    let slider = setInterval(
-      () => setCurrentIndex((prevState) => prevState + 1),
-      5000
-    );
-    return () => {
-      clearInterval(slider);
-    };
-  }, [currentIndex]);
+  if (shift) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+      let slider = setInterval(
+        () => setCurrentIndex((prevState) => prevState + 1),
+        2000
+      );
+      return () => {
+        clearInterval(slider);
+      };
+    }, [currentIndex]);
+  }
 
   return (
-    <div className={cl.section}>
-      <div className={cl.sectionCenter}>
+    <div className={stails.section}>
+      <div className={stails.sectionCenter}>
         {movies.map((movie: IMovie, movieIndex: number) => {
           const { id, title, url, description } = movie;
 
-          let position = `${cl.nextSlider}`;
+          let position = `${stails.nextSlider}`;
           if (movieIndex === currentIndex) {
-            position = `${cl.activeSlider}`;
+            position = `${stails.activeSlider}`;
           }
 
           if (
             movieIndex === currentIndex - 1 ||
             (currentIndex === 0 && movieIndex === movies.length - 1)
           ) {
-            position = `${cl.lastSlider}`;
+            position = `${stails.lastSlider}`;
           }
           return (
-            <article className={position} key={id}>
-              <img src={url} alt={title} />
-              <div className={cl.wrapperContent}>
-                <h2>{title}</h2>
-                <p>{description}</p>
-                <button>
+            <article className={cn(position, stails.article)} key={id}>
+              <img className={stails.img} src={url} alt={title} />
+              <div className={stails.wrapperContent}>
+                <a href="/" target="_blank">
+                  {title}
+                </a>
+                <p
+                  style={!shift ? { display: "none" } : { display: "block" }}
+                  // className={!shift ? stails.text : stails.none}
+                >
+                  {description}
+                </p>
+                <button
+                  style={!shift ? { display: "none" } : { display: "block" }}
+                >
                   <a href="/" target="_blank">
                     Смотреть
                   </a>
@@ -71,11 +87,21 @@ export default function Slider() {
           );
         })}
         <div
-          className={cl.iconsLeft}
+          className={stails.iconsLeft}
+          style={
+            currentIndex === 0 && !shift
+              ? { display: "none" }
+              : { display: "block" }
+          }
           onClick={() => setCurrentIndex((prevState) => prevState - 1)}
         ></div>
         <div
-          className={cl.iconsRigh}
+          className={stails.iconsRigh}
+          style={
+            movies.length - 1 === currentIndex && !shift
+              ? { display: "none" }
+              : { display: "block" }
+          }
           onClick={() => setCurrentIndex((prevState) => prevState + 1)}
         ></div>
       </div>
