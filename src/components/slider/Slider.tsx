@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, {useEffect, useState } from "react";
 import cn from "classnames";
 interface IMovie {
   albumId: number;
@@ -8,20 +9,20 @@ interface IMovie {
   thumbnailUrl: string;
   [key: string]: string | number;
 }
+interface IStyles {
+  [key: string]: string;
+}
 
 interface ISlider {
   shift?: boolean;
   data: IMovie[];
-  stails: any;
+  styils: IStyles;
 }
 
-export default function Slider({ shift = false, data, stails }: ISlider) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+export default function Slider({ shift = false, data, styils }: ISlider) {
   const [movies, setMovies] = useState(data);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     const lastIndex = movies.length - 1;
     if (currentIndex < 0) {
@@ -33,7 +34,6 @@ export default function Slider({ shift = false, data, stails }: ISlider) {
   }, [currentIndex, movies]);
 
   if (shift) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
       let slider = setInterval(
         () => setCurrentIndex((prevState) => prevState + 1),
@@ -46,33 +46,30 @@ export default function Slider({ shift = false, data, stails }: ISlider) {
   }
 
   return (
-    <div className={stails.section}>
-      <div className={stails.sectionCenter}>
+    <div className={styils.section}>
+      <div className={styils.sectionCenter}>
         {movies.map((movie: IMovie, movieIndex: number) => {
           const { id, title, url, description } = movie;
 
-          let position = `${stails.nextSlider}`;
+          let position = `${styils.nextSlider}`;
           if (movieIndex === currentIndex) {
-            position = `${stails.activeSlider}`;
+            position = `${styils.activeSlider}`;
           }
 
           if (
             movieIndex === currentIndex - 1 ||
             (currentIndex === 0 && movieIndex === movies.length - 1)
           ) {
-            position = `${stails.lastSlider}`;
+            position = `${styils.lastSlider}`;
           }
           return (
-            <article className={cn(position, stails.article)} key={id}>
-              <img className={stails.img} src={url} alt={title} />
-              <div className={stails.wrapperContent}>
+            <article className={cn(position, styils.article)} key={id}>
+              <img className={styils.img} src={url} alt={title} />
+              <div className={styils.wrapperContent}>
                 <a href="/" target="_blank">
                   {title}
                 </a>
-                <p
-                  style={!shift ? { display: "none" } : { display: "block" }}
-                  // className={!shift ? stails.text : stails.none}
-                >
+                <p style={!shift ? { display: "none" } : { display: "block" }}>
                   {description}
                 </p>
                 <button
@@ -87,7 +84,7 @@ export default function Slider({ shift = false, data, stails }: ISlider) {
           );
         })}
         <div
-          className={stails.iconsLeft}
+          className={styils.iconsLeft}
           style={
             currentIndex === 0 && !shift
               ? { display: "none" }
@@ -96,7 +93,7 @@ export default function Slider({ shift = false, data, stails }: ISlider) {
           onClick={() => setCurrentIndex((prevState) => prevState - 1)}
         ></div>
         <div
-          className={stails.iconsRigh}
+          className={styils.iconsRigh}
           style={
             movies.length - 1 === currentIndex && !shift
               ? { display: "none" }
