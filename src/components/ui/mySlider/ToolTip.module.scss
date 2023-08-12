@@ -1,0 +1,35 @@
+$background-color:#2e2929;
+
+.container {
+   position: relative;
+   display: flex;
+}
+
+.tooltip {
+   position: absolute;
+   left: -16px;
+   top: -29px;
+   padding: 6px;
+   width: 130px;
+   margin-left: calc(100%);
+   justify-content: center;
+   color: #FFFFFF;
+   background-color: $background-color;
+   border-radius: 4px;
+   text-align: center;
+   font-size: 10px;
+   white-space: pre-line;
+   font-weight: 600;
+   pointer-events: none;
+}
+
+.triangleDown {
+   position: absolute;
+   left: 4px;
+   top: -8px;
+   width: 0;
+   height: 0;
+   border-left: 6px solid transparent;
+   border-right: 6px solid transparent;
+   border-top: 8px solid $background-color;
+}

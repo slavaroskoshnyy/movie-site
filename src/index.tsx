@@ -1,16 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.scss";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import 'overlayscrollbars/overlayscrollbars.css'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+import Router from './components/routes/Routes'
+import './index.scss'
+import MainProvider from './providers/MainProvider'
+import reportWebVitals from './reportWebVitals'
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+	<React.StrictMode>
+		<MainProvider>
+			<Router />
+		</MainProvider>
+	</React.StrictMode>
+)
 
-reportWebVitals();
+reportWebVitals()

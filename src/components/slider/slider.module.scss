@@ -1,21 +1,36 @@
+@import '../../assets/styles/variables';
+
 // Высота картинки = высоте самого блока
 $heightImg: 600px;
+// // Размер стрелки
+// $widthArrow: 24px;
 
-.iconsLeft {
-   width: 20px;
-   height: 20px;
-   border-top: 3px solid #6E18C0;
-   border-left: 3px solid #6E18C0;
-   transform: rotate(-45deg);
-}
+// .arrow {
+//    color: #000;
+//    z-index: 20;
+//    font-size: $widthArrow;
 
-.iconsRigh {
-   width: 20px;
-   height: 20px;
-   border-top: 3px solid #6E18C0;
-   border-right: 3px solid #6E18C0;
-   transform: rotate(45deg);
-}
+//    cursor: pointer;
+//    position: absolute;
+//    top: calc(50% - 1/2*$widthArrow);
+
+//    &:active,
+//    &:hover {
+//       color: hsla(0, 0%, 100%, .72);
+//    }
+
+//    &.left {
+//       left: 2%;
+//    }
+
+//    &.right {
+//       right: 2%;
+//    }
+
+//    &.none {
+//       display: none;
+//    }
+// }
 
 .section {
    overflow: hidden;
@@ -23,44 +38,31 @@ $heightImg: 600px;
    max-width: 98vw;
    margin: 0 auto;
    height: $heightImg;
+}
+
+.sectionCenter {
    display: flex;
    align-items: center;
 }
 
-.sectionCenter {
-   margin: 20px auto;
-   width: 98vw;
+.sectionItems {
+   max-width: 1200px;
+   margin: 0 auto;
    display: flex;
    align-items: center;
    justify-content: center;
    overflow: hidden;
 }
 
-.iconsLeft:active,
-.iconsRigh:active {
-   border-color: #000;
-}
-
-.iconsLeft {
-   position: absolute;
-   left: 2%;
-   top: 50%
-}
-
-.iconsRigh {
-   position: absolute;
-   right: 2%;
-   top: 50%
-}
-
 .img {
    position: relative;
-   margin: 0 20px;
+   margin: 0 10px;
    min-width: 90vw;
    max-width: 90vw;
    height: $heightImg;
    border-radius: 30px;
    cursor: pointer;
+   @include fade-bg-gradient();
 }
 
 .article {

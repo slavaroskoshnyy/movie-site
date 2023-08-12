@@ -1,0 +1,15 @@
+.wrapperForm {
+   width: 500px;
+   height: 300px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: grey;
+	margin: 30px auto;
+	border-radius: 10px;
+
+   form {
+      width: 300px;
+      
+   }
+}

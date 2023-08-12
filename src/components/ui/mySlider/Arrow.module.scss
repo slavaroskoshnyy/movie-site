@@ -1,0 +1,76 @@
+@import "./slickTheme.scss";
+
+.prev,
+.next {
+   position: absolute;
+   display: block;
+   height: 20px;
+   width: 20px;
+   line-height: 0px;
+   font-size: 0px;
+   cursor: pointer;
+   background: transparent;
+   color: transparent;
+   top: 50%;
+   -webkit-transform: translate(0, -50%);
+   -ms-transform: translate(0, -50%);
+   transform: translate(0, -50%);
+   padding: 0;
+   border: none;
+   outline: none;
+
+   &:hover,
+   &:focus {
+      outline: none;
+      background: transparent;
+      color: transparent;
+
+      &:before {
+         opacity: $slick-opacity-on-hover;
+      }
+   }
+
+   &.slick-disabled {
+      display: none;
+      cursor: auto;
+   }
+
+   &.slick-disabled:before {
+      display: none;
+      cursor: none;
+   }
+
+   &:before {
+      font-family: $slick-font-family;
+      font-size: 35px;
+      line-height: 1;
+      color: $slick-arrow-color;
+      opacity: $slick-opacity-default;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+   }
+}
+
+.prev {
+   left: 10px;
+
+   @media(max-width:1100px) {
+      left: 0
+   }
+
+   &:before {
+      content: $slick-prev-character;
+   }
+}
+
+.next {
+   right: 10px;
+
+   @media(max-width:1100px) {
+      right: 0
+   }
+
+   &:before {
+      content: $slick-next-character;
+   }
+}

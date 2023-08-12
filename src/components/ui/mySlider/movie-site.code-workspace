@@ -1,0 +1,22 @@
+{
+  "folders": [
+	{
+		"path": "../../../../../../movie-site"
+	},
+	{
+		"path": "../../../../.."
+	},
+	{
+		"path": "../../../../../../../web/интенсивы/fronetd"
+	},
+	{
+		"path": "../../../../../../../web/интенсивы/frontend prodvinyts/backend-advanced/backend-advanced-main"
+	}
+],
+  "settings": {
+	"liveServer.settings.multiRootWorkspaceName": "tasks",
+	"jest.disabledWorkspaceFolders": [
+		"fronetd"
+	]
+  }
+}
